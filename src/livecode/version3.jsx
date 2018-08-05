@@ -2,6 +2,8 @@ import React from 'react';
 import { Switch } from '../components/Switch';
 import { Toggle } from './version2';
 
+// around 7 mins
+
 /**
  * HOC
  */
@@ -31,7 +33,7 @@ const SimpleToggle = withToggle(SimpleToggleView);
 const ComplexToggleView = ({ on, toggle }) => (
   <div>
     <Switch on={on} onClick={toggle} />
-    <div>The state is {on ? 'on' : 'off'}</div>
+    <p>The state is {on ? 'on' : 'off'}</p>
     <button onClick={toggle}>{on ? 'on' : 'off'}</button>
   </div>
 );

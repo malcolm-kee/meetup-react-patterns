@@ -1,6 +1,13 @@
 import React from 'react';
 import { Switch } from '../components/Switch';
 
+// Take around 9 minutes
+
+/**
+ * Implements another toggle (ComplexToggle) that has the same props as SimpleToggle but:
+ * - it will display its state in text as `The state is ${on/off}`
+ * - it also allowed to be toggled with a button at the bottom
+ */
 export class Toggle extends React.Component {
   state = {
     on: this.props.defaultOn
@@ -13,7 +20,9 @@ export class Toggle extends React.Component {
   toggle = () => {
     this.setState(
       prevState => ({ on: !prevState.on }),
-      () => this.props.onToggle(this.state.on)
+      () => {
+        this.props.onToggle(this.state.on);
+      }
     );
   };
 
@@ -22,46 +31,25 @@ export class Toggle extends React.Component {
   };
 }
 
-/**
- * Implements a toggle (SimpleToggle) that that the following props:
- * - defaultOn - the toggle is on by default
- * - onToggle: (on) => void - the callback when the toggle state is changed
- * The toggle should just render a toggle button
- */
-class SimpleToggle extends React.Component {
-  render() {
-    return (
-      <Toggle
-        defaultOn={this.props.defaultOn}
-        onToggle={this.props.onToggle}
-        render={({ on, toggle }) => <Switch on={on} onClick={toggle} />}
-      />
-    );
-  }
-}
+const SimpleToggle = props => (
+  <Toggle
+    {...props}
+    render={({ on, toggle }) => <Switch on={on} onClick={toggle} />}
+  />
+);
 
-/**
- * Implements another toggle (ComplexToggle) that has the same props as SimpleToggle but:
- * - it will display its state in text as `The state is ${on/off}`
- * - it also allowed to be toggled with a button at the bottom
- */
-class ComplexToggle extends React.Component {
-  render() {
-    return (
-      <Toggle
-        defaultOn={this.props.defaultOn}
-        onToggle={this.props.onToggle}
-        render={({ on, toggle }) => (
-          <div>
-            <Switch on={on} onClick={toggle} />
-            <div>The state is {on ? 'on' : 'off'}</div>
-            <button onClick={toggle}>{on ? 'on' : 'off'}</button>
-          </div>
-        )}
-      />
-    );
-  }
-}
+const ComplexToggle = props => (
+  <Toggle
+    {...props}
+    render={({ on, toggle }) => (
+      <div>
+        <Switch on={on} onClick={toggle} />
+        <p>The state is {on ? 'on' : 'off'}</p>
+        <button onClick={toggle}>{on ? 'on' : 'off'}</button>
+      </div>
+    )}
+  />
+);
 
 export const Usage = () => (
   <div>

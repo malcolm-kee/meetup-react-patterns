@@ -1,5 +1,8 @@
 import React from 'react';
 import { Switch } from '../components/Switch';
+// Switch is a component that takes two props: on & onClick
+
+// Take around 5 minutes
 
 /**
  * Implements a toggle (SimpleToggle) that that the following props:
@@ -19,7 +22,9 @@ class SimpleToggle extends React.Component {
   toggle = () => {
     this.setState(
       prevState => ({ on: !prevState.on }),
-      () => this.props.onToggle(this.state.on)
+      () => {
+        this.props.onToggle(this.state.on);
+      }
     );
   };
 
@@ -30,6 +35,7 @@ class SimpleToggle extends React.Component {
 
 export const Usage = () => (
   <div>
-    <SimpleToggle defaultOn onToggle={on => console.info({ on })} />
+    <h1>Simple Toggle </h1>
+    <SimpleToggle onToggle={on => console.info({ on })} />
   </div>
 );
