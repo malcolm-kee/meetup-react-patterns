@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import './css/bootstrap.css';
-import { Usage } from './version1';
-// import { Usage } from './version2';
-// import { Usage } from './version3';
+// import { Usage } from './livecode/version1';
+// import { Usage } from './livecode/version2';
+import { Usage } from './livecode/version3';
 
 class App extends Component {
   render() {
