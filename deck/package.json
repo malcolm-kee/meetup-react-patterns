@@ -1,0 +1,13 @@
+{
+  "name": "deck",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Malcolm Kee",
+  "license": "MIT",
+  "dependencies": {
+    "mdx-deck": "^1.5.10"
+  },
+  "scripts": {
+    "start": "mdx-deck deck.mdx"
+  }
+}

@@ -1,0 +1,124 @@
+export { book as theme } from 'mdx-deck/themes'
+import { Invert } from 'mdx-deck/layouts'
+
+export default Invert
+
+# Advanced React Patterns
+Render Props & Higher-order Component
+
+[https://github.com/malcolm-kee/meetup-react-patterns](https://github.com/malcolm-kee/meetup-react-patterns)
+
+---
+# `<Malcolm />`
+
+- Frontend Engineer at Kreloses
+- malcolm@malcolmkee.com
+- github.com/malcolm-kee
+- twitter.com/Malcolm_Kee
+---
+# Reusing UI in React
+
+```jsx
+<List>
+    <ListItem text="A" />
+    <ListItem text="B" />
+    <ListItem text="C" />
+</List>
+```
+---
+# Reusing behavior?
+
+```jsx
+export class ComponentWithModal extends React.Component
+{
+    state = {
+        showModal: false
+    }
+
+    toggleShowModal = () => {
+        // 
+    }
+}
+```
+
+```notes
+Start live code
+```
+---
+export default Invert
+
+# Render Props
+
+```jsx
+<BehaviorComponent
+    option={someOptionValue}
+    render={data => 
+        <VisualComponent data={data} />}
+/>
+```
+---
+# Render Props = 
+# delegates rendering
+
+```jsx
+<Toggle
+    // delegate behavior
+    onToggle={toggleHandler}    
+
+    // delegate rendering
+    render={({ toggle, on }) =>
+        <Switch on={on} onClick={toggle} />} 
+/>
+```
+
+---
+# Alternative Format
+```jsx
+<BehaviorComponent>
+    {data => <VisualComponent data={data} />}
+</BehaviorComponent>
+```
+
+---
+# Libraries using render props
+
+- `formik`
+- `downshift`
+- `react-motion`
+- `react-router`
+- React Context (16.3+)
+---
+export default Invert
+
+# Higher-order Component
+
+```js
+const HOC = Component => EnhancedComponent
+```
+---
+# HOC with currying
+
+```js
+const HOC = (option1, option2) => Component => 
+    EnhancedComponent
+
+```
+---
+# Example: React Redux
+
+```js
+const connect = (mapStates, mapDispatch) => Component =>
+    ConnectedComponent
+```
+
+# Example: React Router
+
+```js
+const withRouter = Component => RoutedComponent
+```
+---
+# HOC = Decorator
+
+```notes
+continue live code
+```
